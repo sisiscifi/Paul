@@ -1,0 +1,83 @@
+
+//float speedx = 3;
+//float speedy = 3;
+float a = (23);
+float c = (235);
+float b = (55);
+
+
+//float circleX = random (600);
+//float circleY= random (300);
+
+FloatList cX = new FloatList();
+FloatList cY = new FloatList();
+FloatList sX = new FloatList();
+FloatList sY = new FloatList();
+boolean kDown = false;
+
+
+void setup () {
+  size (600,300);
+  background (30);
+  cX.set(0, random (600));
+  cY.set(0, random (300));
+  sX.set(0, 3);
+  sY.set(0, 3);
+}
+
+void draw () {
+  
+  background (30);
+  
+  if (keyPressed && kDown == false)
+  {
+    if((key == 'd' || key == 'D'))
+    {
+      cX.append(random (600));
+      cY.append(random (300));
+      sX.append(3);
+      sY.append(3);
+    }
+    cX.set(0, random (600));
+    cY.set(0, random (300));
+    kDown = true;
+  }
+  else if(keyPressed == false)
+  {
+    kDown = false;
+  }
+  for(int i = 0; i<cX.size() ; i++)
+  {
+    ball(i);
+  } 
+}
+ 
+ void ball (int i) {
+//circleX = circleX *random (600);
+//circleY= circleY*random (300);
+    displayBall(i);
+   ballMove(i);
+   ballEdges(i);
+  
+ }
+ 
+
+void displayBall (int i) {
+  fill(a, b, c);
+  ellipse (cX.get(i), cY.get(i), 20, 20);
+
+}
+
+void ballMove (int i) {
+  cX.set(i, cX.get(i) + sX.get(i));
+  cY.set(i, cY.get(i) + sY.get(i));
+}
+
+void ballEdges (int i) {
+  if (cX.get(i) >= 600 || cX.get(i)<=0) {
+    sX.set(i, sX.get(i) *-1);
+  }
+if (cY.get(i) >= 300 || cY.get(i) <=0) {
+    sY.set(i, sY.get(i) *-1);
+  }
+}
