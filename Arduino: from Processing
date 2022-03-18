@@ -1,0 +1,24 @@
+void setup() 
+{
+//initialize serial communications at a 9600 baud rate
+Serial.begin(9600);
+}
+
+void loop()
+{
+//send 'Hello, world!' over the serial port
+
+if(digitalRead(2) == true)
+{
+  Serial.println("Btn1");
+}
+else if(digitalRead(3) == true)
+{
+  Serial.println("Btn2");
+}
+else
+{
+  Serial.println("hm");
+}
+delay(100);
+}
